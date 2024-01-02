@@ -5,18 +5,19 @@ package com.bohutskyi.algorithms.leetcode;
  */
 public class BinarySearch {
     public static int search(int[] nums, int target) {
+
         int left = 0;
-        int pivot;
         int right = nums.length - 1;
 
         while (left <= right) {
-            pivot = left + (right - left) / 2;
-            if (nums[pivot] == target) {
-                return target;
-            } else if (nums[pivot] < target) {
-                left = pivot;
-            }else {
-                right = pivot;
+            int mid = left + (right - left) / 2;
+
+            if (nums[mid] == target) {
+                return nums[mid];
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
             }
         }
         return -1;
@@ -24,6 +25,6 @@ public class BinarySearch {
 
     public static void main(String[] args) {
         int[] array = {0, 1, 2, 3, 4, 5, 6, 7, 8};
-        System.out.println(search(array, -1));
+        System.out.println(search(array, 1));
     }
 }
